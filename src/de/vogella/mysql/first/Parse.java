@@ -273,7 +273,6 @@ public class Parse {
     }
 
     public String parseMoon(){
-        int date = currentdate.getDayOfMonth();
         try {
             doc = Jsoup.connect("https://lunaf.com/lunar-calendar/").get();
         } catch (IOException ex) {
