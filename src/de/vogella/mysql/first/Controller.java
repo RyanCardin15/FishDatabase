@@ -46,9 +46,7 @@ public class Controller implements Initializable {
     int[] arr = new int[24];
 
     Parse one = new Parse();
-    private Statement statement = null;
     private PreparedStatement preparedStatement;
-    private ResultSet resultSet = null;
     private Connection con = null;
 
     static Document doc;
