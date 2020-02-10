@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0099ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.vogella.mysql.first.Controller">
+   <children>
+      <Button fx:id="entry" layoutX="248.0" layoutY="44.0" mnemonicParsing="false" onAction="#entry_click" text="Make an Entry" />
+      <Button fx:id="dataView" layoutX="258.0" layoutY="200.0" mnemonicParsing="false" onAction="#viewData" text="View all Data" />
+   </children>
+</AnchorPane>

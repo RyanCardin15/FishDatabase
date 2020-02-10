@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.vogella.mysql.first.Controller">
+   <children>
+      <TextArea fx:id="queryList" layoutX="299.0" layoutY="14.0" prefHeight="376.0" prefWidth="287.0" promptText="Selected: " />
+      <Button fx:id="showData" layoutX="129.0" layoutY="284.0" mnemonicParsing="false" onAction="#queryData" text="View Data" />
+      <Button fx:id="queryBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#queryBack_click" text="Back" />
+      <ComboBox fx:id="view" layoutX="89.0" layoutY="39.0" prefWidth="150.0" promptText="View" />
+      <Button fx:id="add" layoutX="145.0" layoutY="200.0" mnemonicParsing="false" onAction="#add_click" text="Add" />
+   </children>
+</AnchorPane>
