@@ -180,7 +180,7 @@ public class Controller implements Initializable {
         this.fishName.getItems().addAll("Speckled Trout", "Redfish", "Flounder", "Sheepshead", "Black Drum");
         this.fishClarity.getItems().addAll("Crystal Clear", "Clear", "Ehh", "Cloudy", "Bruh I'm Blind");
         this.fishLocation.getItems().addAll("Corpus Christi", "Port Aransas");
-        this.view.getItems().addAll("Fish Name", "Fish Size", "Fish Amount", "Fish_Location", "Wind Speed", "Water Pressure", "Month", "Moon Cycle", "Medium", "Wind Direction", "Air Temperature", "Visibility", "Water Temperature", "Humidity", "Water Clarity", "4hr Change in Air Temp", "4hr Change in Water Temp", "4hr Change in Pressure", "8hr Change in Air Temp", "8hr Change in Water Temp", "8hr Change in Pressure", "24hr Change in Air Temp", "8hr Change in Water Temp", "24hr Change in Pressure", "View All");
+        this.view.getItems().addAll( "View All","Fish Name", "Fish Size", "Fish Amount", "Fish_Location", "Wind Speed", "Water Pressure", "Month", "Moon Cycle", "Medium", "Wind Direction", "Air Temperature", "Visibility", "Water Temperature", "Humidity", "Water Clarity", "4hr Change in Air Temp", "4hr Change in Water Temp", "4hr Change in Pressure", "8hr Change in Air Temp", "8hr Change in Water Temp", "8hr Change in Pressure", "24hr Change in Air Temp", "24hr Change in Water Temp", "24hr Change in Pressure");
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -226,70 +226,153 @@ public class Controller implements Initializable {
             queryList.appendText("Please Select Some Values\n");
         } else {
             while (rs.next()) {
+                queryList.appendText("----------------------------------\n");
+                queryList.appendText("Entry Number " + count + ": \n");
+                queryList.appendText("----------------------------------\n");
+                for(int i = 0; i < listnum; i++) {
+                    int temp = arr[i];
 
-                String fishname = rs.getString("Fish_Name");
-                String fishsize = rs.getString("Fish_Size");
-                String fishamount = rs.getString("Fish_Amount");
-                String fishlocation = rs.getString("Fish_Location");
-                String windspeed = rs.getString("Wind_Speed");
-                String waterpressure = rs.getString("Water_pressure");
-                String month = rs.getString("Month");
-                String mooncycle = rs.getString("Moon_Cycle");
-                String medium = rs.getString("Medium");
-                String winddirection = rs.getString("Wind_Direction");
-                String air_temperature = rs.getString("Air_Temperature");
-                String visibility = rs.getString("Visibility");
-                String watertemperature = rs.getString("Water_Temperature");
-                String humidity = rs.getString("Humidity");
-                String waterclarity = rs.getString("Water_Clarity");
-                String waterchange4h = rs.getString("4hr_Water_Change");
-                String airchange4h = rs.getString("4hr_Air_Change");
-                String pressurechange4h = rs.getString("4hr_Pressure_Change");
-                String waterchange8h = rs.getString("8hr_Water_Change");
-                String airchange8h = rs.getString("8hr_Air_Change");
-                String pressurechange8h = rs.getString("8hr_Pressure_Change");
-                String waterchange24h = rs.getString("24hr_Water_Change");
-                String airchange24h = rs.getString("24hr_Air_Change");
-                String pressurechange24h = rs.getString("24hr_Pressure_Change");
-                    queryList.appendText("Entry Number " + count + ": \n");
-                    queryList.appendText("Fish: " + fishname + "\n");
-                    queryList.appendText("Size: " + fishsize + "\n");
-                    queryList.appendText("Amount: " + fishamount + "\n");
-                    queryList.appendText("Location: " + fishlocation + "\n");
-                    queryList.appendText("Medium: " + medium + "\n");
-                    queryList.appendText("Month: " + month + "\n");
-                    queryList.appendText("Moon Cycle: " + mooncycle + "\n");
-                    queryList.appendText("Wind Speed: " + windspeed + "\n");
-                    queryList.appendText("Wind Direction: " + winddirection + "\n");
-                    queryList.appendText("Size: " + fishsize + "\n");
-                    queryList.appendText("Water Temp: " + watertemperature + "\n");
-                    queryList.appendText("Pressure: " + waterpressure + "\n");
-                    queryList.appendText("Air Temp: " + air_temperature + "\n");
-                    queryList.appendText("Visibility: " + visibility + "\n");
-                    queryList.appendText("Water Clarity: " + waterclarity + "\n");
-                    queryList.appendText("Humidity: " + humidity + "\n");
-                    queryList.appendText("---------------4hr Change---------------\n");
-                    queryList.appendText("Air Temp Change: " + airchange4h + "\n");
-                    queryList.appendText("Water Temp Change: " + waterchange4h + "\n");
-                    queryList.appendText("Pressure Change: " + pressurechange4h + "\n");
-                    queryList.appendText("---------------8hr Change---------------\n");
-                    queryList.appendText("Air Temp Change: " + airchange8h + "\n");
-                    queryList.appendText("Water Temp Change: " + waterchange8h + "\n");
-                    queryList.appendText("Pressure Change: " + pressurechange8h + "\n");
-                    queryList.appendText("---------------24hr Change---------------\n");
-                    queryList.appendText("Air Temp Change: " + airchange24h + "\n");
-                    queryList.appendText("Water Temp Change: " + waterchange24h + "\n");
-                    queryList.appendText("Pressure Change: " + pressurechange24h + "\n");
-                    queryList.appendText("----------------------------------------\n");
-                    queryList.appendText("----------------------------------------\n");
-                    queryList.appendText("----------------------------------------\n");
-                    queryList.appendText("----------------------------------------\n");
-                        count++;
-                        check++;
+                    String fishname = rs.getString("Fish_Name");
+                    String fishsize = rs.getString("Fish_Size");
+                    String fishamount = rs.getString("Fish_Amount");
+                    String fishlocation = rs.getString("Fish_Location");
+                    String windspeed = rs.getString("Wind_Speed");
+                    String waterpressure = rs.getString("Water_pressure");
+                    String month = rs.getString("Month");
+                    String mooncycle = rs.getString("Moon_Cycle");
+                    String medium = rs.getString("Medium");
+                    String winddirection = rs.getString("Wind_Direction");
+                    String air_temperature = rs.getString("Air_Temperature");
+                    String visibility = rs.getString("Visibility");
+                    String watertemperature = rs.getString("Water_Temperature");
+                    String humidity = rs.getString("Humidity");
+                    String waterclarity = rs.getString("Water_Clarity");
+                    String waterchange4h = rs.getString("4hr_Water_Change");
+                    String airchange4h = rs.getString("4hr_Air_Change");
+                    String pressurechange4h = rs.getString("4hr_Pressure_Change");
+                    String waterchange8h = rs.getString("8hr_Water_Change");
+                    String airchange8h = rs.getString("8hr_Air_Change");
+                    String pressurechange8h = rs.getString("8hr_Pressure_Change");
+                    String waterchange24h = rs.getString("24hr_Water_Change");
+                    String airchange24h = rs.getString("24hr_Air_Change");
+                    String pressurechange24h = rs.getString("24hr_Pressure_Change");
+                    switch(temp) {
+                        case(1):
+                            queryList.appendText("Fish: " + fishname + "\n");
+                            break;
+                        case(2):
+                            queryList.appendText("Size: " + fishsize + "\n");
+                            break;
+                        case(3):
+                            queryList.appendText("Amount: " + fishamount + "\n");
+                            break;
+                        case(4):
+                            queryList.appendText("Location: " + fishlocation + "\n");
+                            break;
+                        case(5):
+                            queryList.appendText("Wind Speed: " + windspeed + "\n");
+                            break;
+                        case(6):
+                            queryList.appendText("Pressure: " + waterpressure + "\n");
+                            break;
+                        case(7):
+                            queryList.appendText("Month: " + month + "\n");
+                            break;
+                        case(8):
+                            queryList.appendText("Moon Cycle: " + mooncycle + "\n");
+                            break;
+                        case(9):
+                            queryList.appendText("Medium: " + medium + "\n");
+                            break;
+                        case(10):
+                            queryList.appendText("Wind Direction: " + winddirection + "\n");
+                            break;
+                        case(11):
+                            queryList.appendText("Air Temp: " + air_temperature + "\n");
+                            break;
+                        case(12):
+                            queryList.appendText("Visibility: " + visibility + "\n");
+                            break;
+                        case(13):
+                            queryList.appendText("Water Temp: " + watertemperature + "\n");
+                            break;
+                        case(14):
+                            queryList.appendText("Humidity: " + humidity + "\n");
+                            break;
+                        case(15):
+                            queryList.appendText("Water Clarity: " + waterclarity + "\n");
+                            break;
+                        case(16):
+                            queryList.appendText("Air Temp Change: " + airchange4h + "\n");
+                            break;
+                        case(17):
+                            queryList.appendText("Water Temp Change: " + waterchange4h + "\n");
+                            break;
+                        case(18):
+                            queryList.appendText("Pressure Change: " + pressurechange4h + "\n");
+                            break;
+                        case(19):
+                            queryList.appendText("Air Temp Change: " + airchange8h + "\n");
+                            break;
+                        case(20):
+                            queryList.appendText("Water Temp Change: " + waterchange8h + "\n");
+                            break;
+                        case(21):
+                            queryList.appendText("Pressure Change: " + pressurechange8h + "\n");
+                            break;
+                        case(22):
+                            queryList.appendText("Air Temp Change: " + airchange24h + "\n");
+                            break;
+                        case(23):
+                            queryList.appendText("Water Temp Change: " + waterchange24h + "\n");
+                            break;
+                        case(24):
+                            queryList.appendText("Pressure Change: " + pressurechange24h + "\n");
+                            break;
+                        case(50):
+                            queryList.appendText("Fish: " + fishname + "\n");
+                            queryList.appendText("Size: " + fishsize + "\n");
+                            queryList.appendText("Amount: " + fishamount + "\n");
+                            queryList.appendText("Location: " + fishlocation + "\n");
+                            queryList.appendText("Medium: " + medium + "\n");
+                            queryList.appendText("Month: " + month + "\n");
+                            queryList.appendText("Moon Cycle: " + mooncycle + "\n");
+                            queryList.appendText("Wind Speed: " + windspeed + "\n");
+                            queryList.appendText("Wind Direction: " + winddirection + "\n");
+                            queryList.appendText("Size: " + fishsize + "\n");
+                            queryList.appendText("Water Temp: " + watertemperature + "\n");
+                            queryList.appendText("Pressure: " + waterpressure + "\n");
+                            queryList.appendText("Air Temp: " + air_temperature + "\n");
+                            queryList.appendText("Visibility: " + visibility + "\n");
+                            queryList.appendText("Water Clarity: " + waterclarity + "\n");
+                            queryList.appendText("Humidity: " + humidity + "\n");
+                            queryList.appendText("---------------4hr Change---------------\n");
+                            queryList.appendText("Air Temp Change: " + airchange4h + "\n");
+                            queryList.appendText("Water Temp Change: " + waterchange4h + "\n");
+                            queryList.appendText("Pressure Change: " + pressurechange4h + "\n");
+                            queryList.appendText("---------------8hr Change---------------\n");
+                            queryList.appendText("Air Temp Change: " + airchange8h + "\n");
+                            queryList.appendText("Water Temp Change: " + waterchange8h + "\n");
+                            queryList.appendText("Pressure Change: " + pressurechange8h + "\n");
+                            queryList.appendText("---------------24hr Change---------------\n");
+                            queryList.appendText("Air Temp Change: " + airchange24h + "\n");
+                            queryList.appendText("Water Temp Change: " + waterchange24h + "\n");
+                            queryList.appendText("Pressure Change: " + pressurechange24h + "\n");
+                            queryList.appendText("----------------------------------------\n");
+                            queryList.appendText("----------------------------------------\n");
+                            queryList.appendText("----------------------------------------\n");
+                            queryList.appendText("----------------------------------------\n");
+                            break;
+
                     }
-
+                    count++;
+                    check++;
                 }
+
             }
+
+        }
+    }
 
 
     public void viewData(ActionEvent actionEvent) throws IOException {
@@ -326,6 +409,7 @@ public class Controller implements Initializable {
                 break;
             case "Month":
                 arr[listnum] = 7;
+                break;
             case "Moon Cycle":
                 arr[listnum] = 8;
                 break;

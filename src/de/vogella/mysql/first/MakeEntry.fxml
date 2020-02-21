@@ -13,7 +13,7 @@
       <ComboBox fx:id="time" layoutX="14.0" layoutY="45.0" prefWidth="150.0" promptText="Select the Time of the Catch" />
       <DatePicker fx:id="date" layoutX="213.0" layoutY="58.0" />
       <Text layoutX="232.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the day of the catch" />
-      <Text layoutX="249.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Up to 2 days after)" />
+      <Text layoutX="249.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Up to 1 days after)" />
       <ChoiceBox fx:id="fishAmount" layoutX="225.0" layoutY="200.0" prefWidth="150.0" />
       <ChoiceBox fx:id="fishSize" layoutX="225.0" layoutY="158.0" prefWidth="150.0" />
       <ChoiceBox fx:id="fishName" layoutX="225.0" layoutY="117.0" prefWidth="150.0" />
