@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.vogella.mysql.first.Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #6a5acd);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.vogella.mysql.first.Controller">
    <children>
       <TextArea fx:id="queryList" layoutX="299.0" layoutY="14.0" prefHeight="376.0" prefWidth="287.0" promptText="Selected: " />
       <Button fx:id="showData" layoutX="129.0" layoutY="284.0" mnemonicParsing="false" onAction="#queryData" text="View Data" />

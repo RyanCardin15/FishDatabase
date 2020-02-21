@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0099ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.vogella.mysql.first.Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #6a5acd);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.vogella.mysql.first.Controller">
    <children>
       <Button fx:id="submit" layoutX="497.0" layoutY="349.0" mnemonicParsing="false" onAction="#recordEntry" text="Submit" />
       <ComboBox fx:id="time" layoutX="14.0" layoutY="45.0" prefWidth="150.0" promptText="Select the Time of the Catch" />
