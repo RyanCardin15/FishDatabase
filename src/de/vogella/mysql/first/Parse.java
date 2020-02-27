@@ -51,22 +51,22 @@ public class Parse {
         return tempdate;
     }
 
-    public static String[] cleanParseData(String[] clean, String text, String date, int time, String loc) throws NullPointerException {
-        String[] redemtion = new String[25];
+    public static String[] cleanParseData(String[] clean, String text, String date, int time, String loc) {
+        String[] redemption = new String[12];
 
         int count = 1;
 
         if (clean[0].equals("Calm")) {
-            redemtion[0] = "0";
-            redemtion[1] = "0";
+            redemption[0] = "0";
+            redemption[1] = "0";
             count++;
         } else {
-            redemtion[0] = clean[0];
+            redemption[0] = clean[0];
         }
 
         for (int i = 1; i < clean.length; i++) {
             if (isNumeric(clean[i])) {
-                redemtion[count] = clean[i];
+                redemption[count] = clean[i];
                 count++;
             }
         }
@@ -78,38 +78,36 @@ public class Parse {
         int i = 5;
 
         //Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
-        //Matcher matcher = pattern.matcher(redemtion[5]);
-        int timeminus = 1;
-        if (redemtion[2] == null) {
-            parseinfo(text, time - timeminus, date, loc);
-            timeminus++;
-        }else {
-            if (redemtion[2].contains(".")) {
+        //Matcher matcher = pattern.matcher(redemption[5]);
+
+        System.out.println("----------------------");
+        System.out.println(redemption[2]);
+            if (redemption[2].contains(".")) {
                 while (!humidity) {
-                    if (!redemtion[i].contains("%")) {
+                    if (!redemption[i].contains("%")) {
                         i++;
                     } else {
                         if (i > 5) {
-                            redemtion[5] = redemtion[i];
-                            redemtion[6] = redemtion[i + 1];
+                            redemption[5] = redemption[i];
+                            redemption[6] = redemption[i + 1];
                         }
                         humidity = true;
                     }
                 }
             } else {
-                redemtion[2] = redemtion[3];
-                redemtion[3] = redemtion[4];
-                redemtion[4] = redemtion[5];
-                redemtion[5] = redemtion[6];
-                redemtion[6] = redemtion[7];
+                redemption[2] = redemption[3];
+                redemption[3] = redemption[4];
+                redemption[4] = redemption[5];
+                redemption[5] = redemption[6];
+                redemption[6] = redemption[7];
 
                 while (!humidity) {
-                    if (!redemtion[i].contains("%")) {
+                    if (!redemption[i].contains("%")) {
                         i++;
                     } else {
                         if (i > 5) {
-                            redemtion[5] = redemtion[i];
-                            redemtion[6] = redemtion[i + 1];
+                            redemption[5] = redemption[i];
+                            redemption[6] = redemption[i + 1];
                         }
                         humidity = true;
                     }
@@ -120,26 +118,30 @@ public class Parse {
             boolean pressure = false;
             int x = 6;
 
-            if (!redemtion[6].contains(".")) {
+
+            if (!redemption[6].contains(".")) {
                 while (!pressure) {
-                    if (!redemtion[x].contains(".")) {
+                    if (!redemption[x].contains(".")) {
                         x++;
                     } else {
                         if (x > 6) {
-                            redemtion[6] = redemtion[x];
+                            redemption[6] = redemption[x];
                         }
                         pressure = true;
                     }
                 }
             }
+
+
+
+        /*
+        for(int temp = 0; temp < redemption.length; temp++){
+            System.out.println(redemption[temp]);
         }
 
+         */
 
-        for(int temp = 0; temp < redemtion.length; temp++){
-            System.out.println(redemtion[temp]);
-        }
-
-        return redemtion;
+        return redemption;
     }
 
 
@@ -201,6 +203,7 @@ public class Parse {
 
     public String[] changeVar(String text, String date, int time, String loc){
 
+        //ToDo: yesterday calculations will have a problem on the last day of the month. Fix this
         int yesterday = Integer.parseInt(date) - 1;
         String yest = ""+yesterday;
         String[] temp = new String[9];

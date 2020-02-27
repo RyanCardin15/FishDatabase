@@ -26,5 +26,6 @@
       <ChoiceBox fx:id="fishLocation" layoutX="225.0" layoutY="336.0" prefWidth="150.0" />
       <Text layoutX="51.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the Water Clarity:" />
       <Text layoutX="51.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the Location:" />
+      <Button fx:id="backfromentry" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#backfromentry_click" text="Back" />
    </children>
 </AnchorPane>

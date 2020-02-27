@@ -18,8 +18,12 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
+
+
+
     @FXML
-    Button entry, submit, back, dataView, showData, queryBack, add;
+    Button entry, submit, back, dataView, showData, queryBack, add, tableView, backfromentry;
     @FXML
     private
     ComboBox<String> time = new ComboBox<>();
@@ -30,17 +34,20 @@ public class Controller implements Initializable {
     @FXML
     ChoiceBox<String> fishName = new ChoiceBox<>();
     @FXML
-    ChoiceBox<String> fishMedium = new ChoiceBox<String>();
+    ChoiceBox<String> fishMedium = new ChoiceBox<>();
     @FXML
     ChoiceBox<String> fishSize = new ChoiceBox<>();
     @FXML
-    ChoiceBox<String> fishLocation = new ChoiceBox<String>();
+    ChoiceBox<String> fishLocation = new ChoiceBox<>();
     @FXML
     ChoiceBox<String> fishClarity = new ChoiceBox<>();
     @FXML
     TextArea queryList = new TextArea();
     @FXML
     ComboBox<String> view = new ComboBox<>();
+
+
+
 
     int listnum = 0;
     int[] arr = new int[24];
@@ -180,7 +187,7 @@ public class Controller implements Initializable {
         this.fishName.getItems().addAll("Speckled Trout", "Redfish", "Flounder", "Sheepshead", "Black Drum");
         this.fishClarity.getItems().addAll("Crystal Clear", "Clear", "Ehh", "Cloudy", "Bruh I'm Blind");
         this.fishLocation.getItems().addAll("Corpus Christi", "Port Aransas");
-        this.view.getItems().addAll( "View All","Fish Name", "Fish Size", "Fish Amount", "Fish_Location", "Wind Speed", "Water Pressure", "Month", "Moon Cycle", "Medium", "Wind Direction", "Air Temperature", "Visibility", "Water Temperature", "Humidity", "Water Clarity", "4hr Change in Air Temp", "4hr Change in Water Temp", "4hr Change in Pressure", "8hr Change in Air Temp", "8hr Change in Water Temp", "8hr Change in Pressure", "24hr Change in Air Temp", "24hr Change in Water Temp", "24hr Change in Pressure");
+        this.view.getItems().addAll( "View All","Fish Name", "Fish Size", "Fish Amount", "Fish Location", "Wind Speed", "Water Pressure", "Month", "Moon Cycle", "Medium", "Wind Direction", "Air Temperature", "Visibility", "Water Temperature", "Humidity", "Water Clarity", "4hr Change in Air Temp", "4hr Change in Water Temp", "4hr Change in Pressure", "8hr Change in Air Temp", "8hr Change in Water Temp", "8hr Change in Pressure", "24hr Change in Air Temp", "24hr Change in Water Temp", "24hr Change in Pressure");
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -220,7 +227,6 @@ public class Controller implements Initializable {
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery("select * from fish");
         int count = 1;
-        int check = 0;
 
         if (listnum == 0) {
             queryList.appendText("Please Select Some Values\n");
@@ -339,7 +345,6 @@ public class Controller implements Initializable {
                             queryList.appendText("Moon Cycle: " + mooncycle + "\n");
                             queryList.appendText("Wind Speed: " + windspeed + "\n");
                             queryList.appendText("Wind Direction: " + winddirection + "\n");
-                            queryList.appendText("Size: " + fishsize + "\n");
                             queryList.appendText("Water Temp: " + watertemperature + "\n");
                             queryList.appendText("Pressure: " + waterpressure + "\n");
                             queryList.appendText("Air Temp: " + air_temperature + "\n");
@@ -365,10 +370,9 @@ public class Controller implements Initializable {
                             break;
 
                     }
-                    count++;
-                    check++;
-                }
 
+                }
+                count++;
             }
 
         }
@@ -386,86 +390,105 @@ public class Controller implements Initializable {
 
     public void add_click(ActionEvent actionEvent) {
         String added = view.getValue().toString();
-        queryList.appendText(added+ "\n");
 
         switch (added){
             case "Fish Name":
-                arr[listnum] =  1;
+                checkDupes(arr, 1, added);
                 break;
             case "Fish Size":
-                arr[listnum] = 2;
+                checkDupes(arr, 2, added);
                 break;
             case "Fish Amount":
-                arr[listnum] = 3;
+                checkDupes(arr, 3, added);
                 break;
             case "Fish Location":
-                arr[listnum] = 4;
+                checkDupes(arr, 4, added);
                 break;
             case "Wind Speed":
-                arr[listnum] = 5;
+                checkDupes(arr, 5, added);
                 break;
             case "Water Pressure":
-                arr[listnum] = 6;
+                checkDupes(arr, 6, added);
                 break;
             case "Month":
-                arr[listnum] = 7;
+                checkDupes(arr, 7, added);
                 break;
             case "Moon Cycle":
-                arr[listnum] = 8;
+                checkDupes(arr, 8, added);
                 break;
             case "Medium":
-                arr[listnum] = 9;
+                checkDupes(arr, 9, added);
                 break;
             case "Wind Direction":
-                arr[listnum] = 10;
+                checkDupes(arr, 10, added);
                 break;
             case "Air Temperature":
-                arr[listnum] = 11;
+                checkDupes(arr, 11, added);
                 break;
             case "Visibility":
-                arr[listnum] = 12;
+                checkDupes(arr, 12, added);
                 break;
             case "Water Temperature":
-                arr[listnum] = 13;
+                checkDupes(arr, 13, added);
                 break;
             case "Humidity":
-                arr[listnum] = 14;
+                checkDupes(arr, 14, added);
                 break;
             case "Water Clarity":
-                arr[listnum] = 15;
+                checkDupes(arr, 15, added);
                 break;
             case "4hr Change in Air Temp":
-                arr[listnum] = 16;
+                checkDupes(arr, 16, added);
                 break;
             case "4hr Change in Water Temp":
-                arr[listnum] = 17;
+                checkDupes(arr, 17, added);
                 break;
             case "4hr Change in Pressure":
-                arr[listnum] = 18;
+                checkDupes(arr, 18, added);
                 break;
             case "8hr Change in Air Temp":
-                arr[listnum] = 19;
+                checkDupes(arr, 19, added);
                 break;
             case "8hr Change in Water Temp":
-                arr[listnum] = 20;
+                checkDupes(arr, 20, added);
                 break;
             case "8hr Change in Pressure":
-                arr[listnum] = 21;
+                checkDupes(arr, 21, added);
                 break;
             case "24hr Change in Air Temp":
-                arr[listnum] = 22;
+                checkDupes(arr, 22, added);
                 break;
             case "24hr Change in Water Temp":
-                arr[listnum] = 23;
+                checkDupes(arr, 23, added);
                 break;
             case "24hr Change in Pressure":
-                arr[listnum] = 24;
+                checkDupes(arr, 24, added);
                 break;
             case "View All":
-                arr[0] = 50;
+                checkDupes(arr,50,added);
                 break;
         }
+
+    }
+
+    private void checkDupes(int[] arr, int value, String added) {
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] == value){
+                return;
+            }
+        }
+        arr[listnum] = value;
+        queryList.appendText(added+ "\n");
         listnum++;
+        return;
+    }
+
+    public void viewTable_click(ActionEvent actionEvent) throws IOException {
+        change_page(tableView, "TableView.fxml");
+    }
+
+    public void backfromentry_click(ActionEvent actionEvent) throws IOException {
+        change_page(backfromentry, "MainMenu.fxml");
     }
 }
 

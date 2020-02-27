@@ -16,5 +16,6 @@
          <effect>
             <DropShadow color="#c65757" />
          </effect></Button>
+      <Button fx:id="tableView" layoutX="140.0" layoutY="324.0" mnemonicParsing="false" onAction="#viewTable_click" text="View in Table" />
    </children>
 </AnchorPane>
